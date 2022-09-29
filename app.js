@@ -29,7 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
         interval = setInterval(moveOutcomes, intervalTime)
     }
 
+    //all move outcomes of the snake
+    function moveOutcomes() {
 
+    
+
+    //snake hitting border or itself
+        if (
+            (currentSnake[0] + width >= (width * width) && direction === width ) || //snake hits BOTTOM
+            (currentSnake[0] % width === width -1 && direction === 1 ) || //snake hits RIGHT wall
+            (currentSnake[0] % width === 0 && direction === -1 ) || //snake hits LEFT wall
+            (currentSnake[0] - width < 0 && direction === -width ) || //snake hits TOP
+            squares[currentSnake[0] + direction].classList.contains('snake') //snake hits ITSELF
+        )
+    //snake getting apple
+
+    }
 
     //assign functions to keycodes
     function control(e) {
