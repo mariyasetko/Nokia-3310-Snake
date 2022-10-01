@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const square = document.querySelectorAll('.grid div')
+    const squares = document.querySelectorAll('.grid div')
     const scoreDisplay = document.querySelector('span')
     const startBtn = document.querySelector('.start')
 
@@ -80,5 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 document.addEventListener('keyup', control)
-
+startBtn.addEventListener('click', startGame)
 })
