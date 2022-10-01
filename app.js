@@ -64,6 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[currentSnake[0]].classList.add('snake')
     }
 
+    //generates new apple once previous is eaten
+    function randomApple() {
+        do{
+            appleIndex = Math.floor(Math.random() * squares.length)
+        } while(squares[appleIndex].classList.contains('snake')) //makes sure apple doesn't pop up where snake is
+        squares[appleIndex].classList.add('apple')
+    }
+
     //assign functions to keycodes
     function control(e) {
         squares[currentIndex].classList.remove('snake') //removing class of snake from squares
