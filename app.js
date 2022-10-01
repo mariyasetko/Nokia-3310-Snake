@@ -41,9 +41,27 @@ document.addEventListener('DOMContentLoaded', () => {
             (currentSnake[0] % width === 0 && direction === -1 ) || //snake hits LEFT wall
             (currentSnake[0] - width < 0 && direction === -width ) || //snake hits TOP
             squares[currentSnake[0] + direction].classList.contains('snake') //snake hits ITSELF
-        )
-    //snake getting apple
+        ) {
+            return clearInterval(interval) //will clear interval if any of the above cases happen
+        }
 
+        const tail = currentSnake.pop() //removes last iteration of array and shows it
+        squares[tail].classList.remove('snake') //removes class of snake from TAIL
+        currentSnake.unshift(currentSnake[0] + direction) //gives direction to the head
+
+    //snake getting apple
+    if (squares[currentSnake[0]].classList.contains('apple')) {
+        squares[currentSnake[0]].classList.remove('apple')
+        squares[tail].classList.add('snake')
+        currentSnake.push(tail)
+        // randomApple()
+        score++
+        scoreDisplay.textContent = score
+        clearInterval(interval)
+        intervalTime = intervalTime * speed
+        interval = setInterval(moveOutcomes, intervalTime)
+    }
+    squares[currentSnake[0]].classList.add('snake')
     }
 
     //assign functions to keycodes
